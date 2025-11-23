@@ -360,6 +360,15 @@ processReceiptsOnce().catch(console.error);
 import express from "express";
 
 const app = express();
-app.get("/", (req, res) => res.send("Receipt matcher is running."));
+
+// Simple health check endpoint
+app.get("/", (req, res) => {
+  res.send("Receipt matcher is running.");
+});
+
+// Railway automatically injects the correct port into process.env.PORT
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
