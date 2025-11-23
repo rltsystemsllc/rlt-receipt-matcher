@@ -357,3 +357,9 @@ cron.schedule("*/5 * * * *", async () => {
 
 // run immediately on boot
 processReceiptsOnce().catch(console.error);
+import express from "express";
+
+const app = express();
+app.get("/", (req, res) => res.send("Receipt matcher is running."));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
